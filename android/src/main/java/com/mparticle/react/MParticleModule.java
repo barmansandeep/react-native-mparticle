@@ -371,6 +371,15 @@ public class MParticleModule extends ReactContextBaseJavaModule {
                 product = ConvertProduct(productMap);
                 builder.addProduct(product);
             }
+			if (map.hasKey("currency")) {
+                String currency = map.getString("currency");
+                builder.currency(currency);
+            }
+            if (map.hasKey("customAttributes")) {
+                ReadableMap customAttributesMap = map.getMap("customAttributes");
+                Map<String, String> customAttributes = ConvertStringMap(customAttributesMap);
+                builder.customAttributes(customAttributes);
+            }
         }
         else if (isPromotion) {
             int promotionActionTypeInt = map.getInt("promotionActionType");
